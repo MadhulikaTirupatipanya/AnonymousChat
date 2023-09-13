@@ -60,6 +60,7 @@
   <div class="members-count">-</div>
   <div class="members-list">-</div>
   <div class="messages"></div>
+  <audio id="audio" src="bells.mp3"></audio>
   <form class="message-form" onsubmit="return false;">
     <input class="message-form__input" placeholder="Type a message.." type="text"/>
     <input class="message-form__button" value="Send" type="submit"/>
@@ -185,6 +186,8 @@ function updateMembersDOM() {
 
 function createMessageElement(text, member) {
   const el = document.createElement('div');
+  const audio = document.getElementById('audio');
+    audio.play();
   el.appendChild(createMemberElement(member));
   el.appendChild(document.createTextNode(text));
   el.className = 'message';
@@ -193,6 +196,9 @@ function createMessageElement(text, member) {
 
 function addMessageToListDOM(text, member) {
   const el = DOM.messages;
+  const audio = document.getElementById('audio');
+    audio.play();
+    //alert('new message');
   const wasTop = el.scrollTop === el.scrollHeight - el.clientHeight;
   el.appendChild(createMessageElement(text, member));
   if (wasTop) {
